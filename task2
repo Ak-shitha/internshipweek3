@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Indicator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #password-strength {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .weak {
+            color: red;
+        }
+
+        .medium {
+            color: orange;
+        }
+
+        .strong {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="container">
+            <h2>Password Strength Indicator</h2>
+            <label for="password">Password:</label>
+            <input type="password" id="password" onkeyup="checkPasswordStrength()">
+            <div id="password-strength"></div>
+        </div>
+    </div>
+
+    <script>
+        function checkPasswordStrength() {
+            var password = document.getElementById("password").value;
+            var strengthIndicator = document.getElementById("password-strength");
+
+            if (password.length > 8) {
+                strengthIndicator.textContent = "Strong";
+                strengthIndicator.className = "strong";
+            } else if (password.length > 6 && password.length <= 8) {
+                strengthIndicator.textContent = "Medium";
+                strengthIndicator.className = "medium";
+            } else {
+                strengthIndicator.textContent = "Weak";
+                strengthIndicator.className = "weak";
+            }
+        }
+    </script>
+</body>
+
+</html>
